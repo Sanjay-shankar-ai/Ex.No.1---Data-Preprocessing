@@ -23,7 +23,7 @@ For achieving better results from the applied model in Machine Learning projects
 Another aspect is that the data set should be formatted in such a way that more than one Machine Learning and Deep Learning algorithm are executed in one data set, and best out of them is chosen.
 
 
-##ALGORITHM:
+## ALGORITHM:
 Importing the libraries
 Importing the dataset
 Taking care of missing data
@@ -31,11 +31,54 @@ Encoding categorical data
 Normalizing the data
 Splitting the data into test and train
 
-##PROGRAM:
-/Write your code here/
+## PROGRAM:
+```
+Register Number: 212221230086
+Name: sanjay s
+import pandas as pd
+df=pd.read_csv("/content/Churn_Modelling.csv")
+df.head()
+df.isnull().sum()
+df.drop(["RowNumber","Age","Gender","Geography","Surname"],inplace=True,axis=1)
+print(df)
+x=df.iloc[:,:-1].values
+y=df.iloc[:,-1].values
+print(x)
+print(y)
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+df1 = pd.DataFrame(scaler.fit_transform(df))
+print(df1)
+from sklearn.model_selection import train_test_split
+xtrain,ytrain,xtest,ytest=train_test_split(x,y,test_size=0.2,random_state=2)
+print(xtrain)
+print(len(xtrain))
+print(xtest)
+print(len(xtest))
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+df1 = sc.fit_transform(df)
+print(df1)
+```
 
-##OUTPUT:
-/ Show the result/
+## OUTPUT:
+### Dataset
+![im](img1.png)
 
-##RESULT
-/Type your result here/
+### Discribing data:
+![im](img2.png)
+
+### Normalized data:
+![im](img3.png)
+
+### X_train and Y_train values:
+![im](img4.png)
+
+### X and Y values:
+![im](img5.png)
+
+### X_test and Y_test values:
+![im](img6.png)
+
+## RESULT
+Thus the above program for standardizing the given data was implemented successfully
